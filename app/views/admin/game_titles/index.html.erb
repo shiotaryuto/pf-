@@ -1,0 +1,35 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h2>ゲームタイトルの登録</h2>
+    </li>
+
+<%= form_with model: @game_title, url: admin_game_titles_path, method: :post do |f| %>
+
+<div class="p-3">
+<h2>ゲームタイトル</h2>
+  <%= f.text_field :name %>
+
+ <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
+
+ <% end %>
+</div>
+
+<div class="p-3">
+ <table>
+  <thead>
+    <th>ゲームタイトル一覧</th>
+  </thead>
+
+  <% @game_titles.each do |game| %>
+   <tbody>
+    <tr>
+      <td> <%= game.name %></td>
+      <td>
+        <%= link_to "編集", edit_admin_game_title_path(game.id), class: 'btn btn-sm btn-success' %>
+      </td>
+    </tr>
+   </tbody>
+  <% end %>
+</table>
+</div>
+</div>

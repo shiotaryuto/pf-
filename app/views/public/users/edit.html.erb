@@ -1,0 +1,31 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h1>会員情報編集</h1>
+    </li>
+
+
+<%= form_with model: @user, url: public_user_path(@user.id), method: :patch do |f| %>
+<div class="p-3">
+<h2>氏名</h2>
+  <%= f.text_field :first_name %> <%= f.text_field :last_name %>
+
+<h2>フリガナ</h2>
+<%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
+
+<h2>ニックネーム</h2>
+<%= f.text_field :nickname %>
+
+<h2>メールアドレス</h2>
+<%= f.text_field :email %>
+
+<h2>
+<%= f.submit "編集内容を保存", class: 'btn btn-sm btn-success' %>
+<% end %>
+</h2>
+
+<tr>
+<th>
+<%= link_to "退会する", public_unsubscribe_path %>
+</th>
+</tr>
+</div>

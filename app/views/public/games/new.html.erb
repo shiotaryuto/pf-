@@ -1,0 +1,20 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h2>新規投稿</h2>
+    </li>
+
+<%= form_with model: @game, url: public_games_path do |f| %>
+<div class="p-3">
+<h2>ゲーム</h2>
+<%= f.collection_select :game_title_id,GameTitle.all, :id, :name %>
+
+<h2>タイトル</h2>
+  <%= f.text_field :title %>
+<h2>内容</h2>
+ <%= f.text_area :body %>
+
+ <%= f.submit "新規登録", class: 'btn btn-sm btn-success' %>
+
+ <% end %>
+ </div>
+

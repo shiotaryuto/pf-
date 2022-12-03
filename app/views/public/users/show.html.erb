@@ -1,0 +1,35 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h1>ユーザー</h1>
+    </li>
+
+<div class= "p-3">
+<table>
+<tbody>
+  <tr>
+    <th class="pr-5" style="text-decoration:underline">ニックネーム</th>
+    <th style="text-decoration:underline"><%= @user.nickname %></td>
+    <th><%= link_to "編集する", edit_public_user_path(@user.id), class: 'btn btn-sm btn-success' %></th>
+    </tbody>
+    </tr>
+  </table>
+
+  <table border="1" style="border-collapse: collapse", class="mt-5">
+    <tr>
+    <th>ゲーム</th>
+    <th>タイトル</th>
+    <th>投稿内容</th>
+    <th>コメント</th>
+    </tr>
+
+    <% @games.each do |game| %>
+    <tr>
+    <td><%= game.game_title.name %></td>
+    <td><%= game.title %></td>
+    <td><%= game.body %></td>
+    <td><%= link_to "#{game.post_comments.count} コメント", public_game_path(game.id) %></td>
+    </tr>
+    <% end %>
+  </table>
+  </div>
+  </div>

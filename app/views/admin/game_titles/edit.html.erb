@@ -1,0 +1,16 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h1>タイトル編集</h1>
+    </li>
+
+<div class="p-3">
+<h2>タイトル</h2>
+<%= form_with model: @game_title, url: admin_game_title_path(@game_title), method: :patch do |f| %>
+
+<div class="field">
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存", class: 'btn btn-sm btn-success' %>
+</div>
+  <% end %>
+</div>
+</div>

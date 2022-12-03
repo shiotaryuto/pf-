@@ -1,0 +1,24 @@
+<h1>
+<%= @user.first_name %><%= @user.last_name %>さんの会員情報編集
+</h1>
+
+<h2>会員ID</h2>
+ <%= @user.id %>
+
+
+<%= form_with model: @user, url: admin_userr_path(@user.id), method: :patch do |f| %>
+
+<h2>氏名</h2>
+  <%= f.text_field :first_name %> <%= f.text_field :last_name %>
+
+<h2>フリガナ</h2>
+<%= f.text_field :first_kana_name %> <%= f.text_field :last_kana_name %>
+
+<h2>ニックネーム</h2>
+<%= f.text_field :nickname %>
+
+<h2>メールアドレス</h2>
+<%= f.text_field :email %>
+
+<%= f.submit "変更を保存", class: 'btn btn-secondary' %>
+<% end %>

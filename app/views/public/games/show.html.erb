@@ -1,0 +1,67 @@
+<div class="container p-3">
+    <li class="navbar-brand p-3">
+     <h2>投稿詳細</h2>
+    </li>
+
+<div class="p-3">
+<table>
+<tr>
+<th>ユーザー名</th>
+<th><%= link_to(@game.user.nickname, public_user_path(@game.user.id)) %></th>
+</tr>
+
+<tr>
+<th>ゲームタイトル</th>
+<th><%= @game.title %></th>
+</tr>
+
+<tr>
+<th>投稿内容</th>
+<th><%= @game.body %></th>
+</tr>
+
+<tr>
+<td>
+<% if @game.user == current_user %>
+<%= link_to "編集する", edit_public_game_path(@game.id), class: 'btn btn-sm btn-success' %>
+<% end %>
+</td>
+
+
+<td>
+<% if @game.user == current_user %>
+<%= link_to "削除する", public_game_path(@game.id), method: :delete, "data-confirm" => "本当に消しますか？", class: 'btn btn-sm btn-danger' %>
+<% end %>
+</td>
+</tr>
+</table>
+
+<table border="1" style= "border-collapse: collapse">
+<tr>
+<th>コメント者</th>
+<th>日付</th>
+<th>コメント</th>
+</tr>
+  <p>コメント件数：<%= @game.post_comments.count %></p>
+  <% @game.post_comments.each do |post_comment| %>
+   <tr>
+    <td><%= post_comment.user.nickname %></td>
+    <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= post_comment.comment %></td>
+    <td><% if post_comment.user == current_user %>
+      <%= link_to "削除", public_game_post_comment_path(@game, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: 'btn btn-sm btn-danger' %>
+    <% end %>
+    </td>
+    <% end %>
+   </tr>
+
+<tr>
+<th>
+  <%= form_with model: [@game, @post_comment],url: public_game_post_comments_path(@game.id), method: :post do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する", class: 'btn btn-sm btn-success' %>
+  <% end %>
+</th>
+</tr>
+</div>
+</table>

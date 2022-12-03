@@ -1,0 +1,30 @@
+<div class="container">
+    <li class="navbar-brand p-3">
+     <h1>投稿一覧</h1>
+    </li>
+
+<table border="1" style="border-collapse: collapse">
+  <thead>
+    <tr>
+      <th>投稿日時</th>
+      <th>投稿者</th>
+      <th>ゲーム</th>
+      <th>タイトル</th>
+      <th>投稿内容</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+
+  <% @games.each do |game| %>
+  <tbody>
+  <tr>
+    <td><%= game.created_at %></td>
+    <td><%= game.user.first_name %><%= game.user.last_name %></td>
+    <td><%= game.game_title.name %></td>
+    <td><%= game.title %></td>
+    <td><%= game.body %></td>
+    <td><%= link_to "#{game.post_comments.count} コメント", admin_game_path(game.id) %></td>
+   <% end %>
+  </tr>
+</table>
+</div>

@@ -1,0 +1,14 @@
+<div class="container p-3">
+    <li class="navbar-brand p-3">
+     <storong>本当に退会しますか？</storong>
+    </li>
+    <div class="p-3">
+     <p>退会すると、会員情報や</p>
+     <P>これまでの投稿履歴が閲覧できなくなります。</P>
+     <P>退会する場合は、「退会する」をクリックしてください。</P>
+    </div>
+<div class="p-3">
+<%= link_to "退会しない", public_user_path(:id) %>
+<%= link_to "退会する", public_withdrawal_path, method: :patch, data: { confirm: '本当に退会しますか？' } %>
+</div>
+</div>

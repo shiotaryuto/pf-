@@ -1,0 +1,40 @@
+<div class="container p-3">
+    <li class="navbar-brand p-3">
+     <h1>投稿詳細</h1>
+    </li>
+
+
+
+<div class="p-3">
+<table>
+<tr>
+<th>ユーザー名</th>
+<th><%= link_to(@game.user.nickname, public_user_path(@game.user.id)) %></th>
+</tr>
+
+<tr>
+<th>ゲームタイトル</th>
+<th><%= @game.title %></th>
+</tr>
+
+<tr>
+<th>投稿内容</th>
+<th><%= @game.body %></th>
+</tr>
+
+<table border="1" style= "border-collapse: collapse">
+<tr>
+<th>コメント者</th>
+<th>日付</th>
+<th>コメント</th>
+</tr>
+  <p>コメント件数：<%= @game.post_comments.count %></p>
+  <% @game.post_comments.each do |post_comment| %>
+   <tr>
+    <td><%= post_comment.user.nickname %></td>
+    <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= post_comment.comment %></td>
+   </tr>
+   <% end %>
+   </table>
+  </div>
