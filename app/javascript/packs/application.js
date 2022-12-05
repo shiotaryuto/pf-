@@ -14,6 +14,10 @@ import "bootstrap";
 import "../stylesheets/application" 
 import '@fortawesome/fontawesome-free/js/all'
 
+body {
+  background-image: url("../images/hoge.jpg");
+}
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
