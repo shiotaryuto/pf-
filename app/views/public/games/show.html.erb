@@ -57,10 +57,12 @@
   </table>
 
 <div>
+<% if @game.user == current_user %>
 <th>
   <%= form_with model: [@game, @post_comment],url: public_game_post_comments_path(@game.id), method: :post do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
     <%= f.submit "送信する", class: 'btn btn-sm btn-success' %>
+  <% end %>
   <% end %>
 </th>
 </tr>

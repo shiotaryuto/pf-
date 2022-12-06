@@ -20,10 +20,11 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-  protected
+
   def after_sign_in_path_for(resource)
-    public_user_path(:id)
+    public_user_path(resource)
   end
+
   def after_sign_out_path_for(resource)
     public_top_path
   end
@@ -32,9 +33,9 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password])
-    if !@user.is_active
-      redirect_to new_user_registration_path
-    end
+      if !@user.is_active
+        redirect_to new_user_registration_path
+      end
     end
   end
 
