@@ -54,8 +54,9 @@
     </td>
     <% end %>
    </tr>
+  </table>
 
-<tr>
+<div>
 <th>
   <%= form_with model: [@game, @post_comment],url: public_game_post_comments_path(@game.id), method: :post do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
@@ -64,4 +65,4 @@
 </th>
 </tr>
 </div>
-</table>
+</div>
